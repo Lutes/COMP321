@@ -1,9 +1,24 @@
+import java.io.*;
+import java.util.Scanner;
+
 public class A1Q1 {
 	public static void main(String args[]){
-		System.out.println(sumArray(convertNumberToArray(231)));
+		Scanner sc = new Scanner(System.in);
+		int number = sc.nextInt();
+		int sum = sumInt(number);
+		int solution = 0;
+		if((0 != sum)){
+			for (int i = 11; i < 100000; i++){
+				if (sumInt(i * number) == sum){
+					solution = i;
+					break;
+				}
+			}			
+			System.out.println(solution);
+		}
 	}
 	
-	public static int[] convertNumberToArray(int number){
+	public static int[] intToArray(int number){
 		String temp = Integer.toString(number);
 		int[] array = new int[temp.length()];
 		for (int i = 0; i < temp.length(); i++)
@@ -13,8 +28,9 @@ public class A1Q1 {
 		return array;
 	}
 	
-	public static int sumArray(int[] array){
+	public static int sumInt(int number){
 		int sum = 0;
+		int [] array = intToArray(number);
 		for(int i = 0; i < array.length; i++){
 			sum += array[i];
 		}
