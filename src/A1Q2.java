@@ -1,13 +1,43 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class A1Q2 {
 	public static void main(String args[]){
-		int[] key = generateKey(5);
-		String message = "Four score and seven years ago ey";
-		printArray(key);
-		printArray(encryptArray(key,(generateMessageArray(message, 5))));
-		
+		String message = null;
+		int[] key = null;
+		int i = 0;
+		int l = 0;
+
+		Scanner scanner = new Scanner(System.in);
+		   while (scanner.hasNext()) {
+			   if (scanner.hasNextInt()){
+				   if (i == 0){
+					   int x = Integer.parseInt(scanner.next());
+					   if (x != 0){
+						   key = new int[x];
+						   i++;
+						   l++;
+					   }
+				   } 
+				   else{
+					   int x = Integer.parseInt(scanner.next());
+					   key[i-1] = x;   
+					   i++;
+				   }
+			   }
+			   else {
+				   message = scanner.nextLine();
+				   i = 0;
+				   l++;
+			   }
+			   if (l == 3){
+				   String en = new String(encryptArray(key, (generateMessageArray(message, key.length))));
+				   System.out.println("\'"+ en +"\'");
+				   l = 0;
+			   }
+		   }
+		   scanner.close();
 	}
 	
 	public static char[] generateMessageArray(String message, int n){
