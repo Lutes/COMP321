@@ -48,10 +48,7 @@ public class natjecanje {
 				}
 			}
 		}
-		System.out.println(b - can);
-			
-			
-			
+		System.out.println(b - can);	
 			
 		};
 }
